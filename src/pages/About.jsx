@@ -3,20 +3,22 @@ import aboutImage from "../assets/about.svg";
 import RotatingText from "../components/RotatingText";
 import LetterGlitch from "../components/LetterGlitch";
 import { Link } from "react-router-dom";
-import { Mail, Phone, Github } from "lucide-react";
+import { Mail, Phone, Github, Instagram, Facebook, Twitter, Linkedin} from "lucide-react";
 
 // import samarth from "../assets/team/samarth.jpeg";
 import ajay from "../assets/team/ajay.jpeg";
-// import sadhana from "../assets/team/sadhana.jpeg";
+import sadhana from "../assets/team/sadhana.jpeg";
+import sohan from "../assets/team/sohan.jpeg";
 // import rutika from "../assets/team/rutika.jpeg";
-// import abhishek from "../assets/team/abhishek.jpeg";
+import abhishek from "../assets/team/abhishek.jpeg";
 
 const teamMembers = [
   // { name: "Samarth Kanthale (CEO)", photo: samarth },
   { name: "Ajay Kandhare", photo: ajay },
-  // { name: "Sadhana Jadhav", photo: sadhana },
-  // { name: "Rutika Ekshinge", photo: rutika },
-  // { name: "Abhishek Jaiswar", photo: abhishek },
+  { name: "Sadhana Jadhav", photo: sadhana },
+  { name: "Sohan Kendre", photo: sohan },
+  // { name: "Rutika Ekshinge", photo: rutika }
+  { name: "Abhishek Jaiswar", photo: abhishek },
 ];
 
 const About = () => {
@@ -81,36 +83,81 @@ const About = () => {
       <a href="tel:+918446857060" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
         <Phone size={16} /> +91 84468 57060
       </a>
-      <a href="https://github.com/SyncroSoftSolutions" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
+      <a href="https://github.com/SyncroSoft-Solutions" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
         <Github size={16} /> GitHub
       </a>
-    </div>
+        </div>
+      {/* Social Buttons */}
+<div className="flex flex-wrap gap-3 mt-4">
+  <a
+    href="https://instagram.com/syncrosoft"
+    target="_blank"
+    rel="noreferrer"
+    className="btn btn-sm btn-circle bg-[#E1306C] border-none hover:opacity-90 text-white"
+    title="Instagram"
+  >
+    <Instagram size={18} />
+  </a>
+  <a
+    href="https://facebook.com/syncrosoft"
+    target="_blank"
+    rel="noreferrer"
+    className="btn btn-sm btn-circle bg-[#1877F2] border-none hover:opacity-90 text-white"
+    title="Facebook"
+  >
+    <Facebook size={18} />
+  </a>
+  <a
+    href="https://twitter.com/syncrosoft"
+    target="_blank"
+    rel="noreferrer"
+    className="btn btn-sm btn-circle bg-[#1DA1F2] border-none hover:opacity-90 text-white"
+    title="Twitter"
+  >
+    <Twitter size={18} />
+  </a>
+  <a
+    href="https://linkedin.com/company/syncrosoft"
+    target="_blank"
+    rel="noreferrer"
+    className="btn btn-sm btn-circle bg-[#0A66C2] border-none hover:opacity-90 text-white"
+    title="LinkedIn"
+  >
+    <Linkedin size={18} />
+  </a>
+</div>
+
 
     <Link to="/contact">
       <button className="btn btn-primary rounded-full text-base px-8 mt-6">Get In Touch</button>
     </Link>
 
     {/* Embedded Team Member Avatars */}
-    <div className="mt-8">
-      <h3 className="text-2xl font-bold text-base-content mb-4">Created By</h3>
-      <div className="flex flex-wrap gap-4">
-        {teamMembers.map((member, idx) => (
-          <motion.div
-            key={idx}
-            whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
-            transition={{ type: "spring", stiffness: 120 }}
-            className="flex flex-col items-center gap-2"
-          >
-            <img
-              src={member.photo}
-              alt={member.name}
-              className="w-20 h-20 rounded-full object-cover border-4 border-primary shadow"
-            />
-            <p className="text-base-content text-xs font-semibold text-center">{member.name}</p>
-          </motion.div>
-        ))}
+      <div className="mt-12">
+        <h3 className="text-2xl font-bold text-base-content mb-6">Created By</h3>
+        <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6">
+          {teamMembers.map((member, idx) => (
+            <motion.div
+              key={idx}
+              whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
+              transition={{ type: "spring", stiffness: 120 }}
+              className="flex flex-col items-center gap-2"
+            >
+              <div className="avatar">
+                <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="object-cover"
+                  />
+                </div>
+              </div>
+              <p className="text-base-content text-xs font-semibold text-center">{member.name}</p>
+            </motion.div>
+          ))}
+        </div>
       </div>
-    </div>
+
   </motion.div>
 </section>
 
