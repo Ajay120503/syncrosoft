@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import aboutImage from "../assets/about.svg";
-import RotatingText from "./RotatingText";
-import LetterGlitch from "./LetterGlitch";
+import RotatingText from "../components/RotatingText";
+import LetterGlitch from "../components/LetterGlitch";
 import { Link } from "react-router-dom";
 
 const About = () => {

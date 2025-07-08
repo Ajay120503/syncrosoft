@@ -14,7 +14,7 @@ import {
   DollarSign,
   MessageCircle,
 } from "lucide-react";
-import RotatingText from "./RotatingText";
+import RotatingText from "../components/RotatingText";
 
 const services = [
   {

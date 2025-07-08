@@ -5,16 +5,17 @@ import { useThemeStore } from './store/useThemeStore.js'
 
 import Navbar from './components/Navbar';
 import LetterGlitch from './components/LetterGlitch';
-
-import Home from './components/Home';
-import About from './components/About';
-import Services from './components/Services';
-import Contact from './components/Contact';
-import Projects from './components/Projects';
 import ThemeSelector from './components/ThemeSelector.jsx';
 
+import Home from './pages/Home';
+import About from './pages/About';
+import Services from './pages/Services';
+import Contact from './pages/Contact';
+import Projects from './pages/Projects';
+import Team from './pages/Team.jsx';
+
+
 import { Toaster } from 'react-hot-toast';
-import Team from './components/Team.jsx';
 
 function App() {
   const { theme } = useThemeStore();

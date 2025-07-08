@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
 import contactImage from "../assets/contact.svg";
-import RotatingText from "./RotatingText";
+import RotatingText from "../components/RotatingText";
 
 const Contact = () => {
   const [form, setForm] = useState({

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Phone, Github, FolderOpen } from "lucide-react";
 
 import member1 from "../assets/team/ajay.jpeg";
-import RotatingText from "./RotatingText";
+import RotatingText from "../components/RotatingText";
 
 const teamMembers = [
   {

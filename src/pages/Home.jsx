@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import HERO_SVG from "../assets/innovation.svg";
-import RotatingText from "./RotatingText";
+import RotatingText from "../components/RotatingText";
 import { Link } from "react-router-dom";
 
 const Home = () => {

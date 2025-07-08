@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
-import RotatingText from "./RotatingText";
+import RotatingText from "../components/RotatingText";
 import project1 from "../assets/projects/FUNCHAT.png";
 
 const projects = [
