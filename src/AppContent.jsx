@@ -8,6 +8,7 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Team from "./pages/Team.jsx";
 import { ArrowDownCircle } from "lucide-react";
+import Footer from './components/Footer';
 
 function AppContent() {
   const [showIndicator, setShowIndicator] = useState(true);
@@ -99,7 +100,7 @@ function AppContent() {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-
+      
       {/* Floating indicator */}
       {showIndicator && (
         <div className="fixed left-1/2 bottom-10 md:top-1/2 transform -translate-x-1/2 md:-translate-y-1/2 z-50 flex flex-col items-center gap-3 animate-bounce">
@@ -118,6 +119,7 @@ function AppContent() {
           )}
         </div>
       )}
+      <Footer />
     </>
   );
 }
