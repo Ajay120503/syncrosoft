@@ -9,9 +9,7 @@ import {
   Users2,
   ShieldCheck,
   ServerCog,
-  Camera,
   Globe2,
-  DollarSign,
   MessageCircle,
 } from "lucide-react";
 import RotatingText from "../components/RotatingText";
@@ -25,9 +23,7 @@ const services = [
   { icon: Users2, title: "IT Consulting", description: "Expert advice and scalable solutions for your business operations and tech stack." },
   { icon: ShieldCheck, title: "Cybersecurity", description: "Protect your systems and data with our advanced security solutions and audits." },
   { icon: ServerCog, title: "API Development", description: "Custom RESTful and GraphQL APIs for seamless integration and scalable services." },
-  { icon: Camera, title: "Digital Marketing", description: "Boost your brand visibility and engagement through SEO, ads, and social media campaigns." },
   { icon: Globe2, title: "E-Commerce Solutions", description: "Build secure, fast, and user-friendly online stores with seamless payment gateways." },
-  { icon: DollarSign, title: "Business Strategy", description: "Craft data-driven growth strategies and digital transformation roadmaps." },
   { icon: MessageCircle, title: "Customer Support Systems", description: "Integrate modern live chat, ticketing, and CRM systems for better customer experience." },
 ];
 

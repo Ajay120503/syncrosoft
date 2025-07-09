@@ -32,7 +32,7 @@ const teamMembers = [
     role: "Web Developer",
     photo: SOHAN,
     email: "mailto:sohan.syncrosoft@gmail.com",
-    phone: "tel:+918530896645",
+    phone: "tel:+919322653708",
     github: "https://github.com/Sohansyncrosoft",
     portfolio: "https://demo.com",
   },

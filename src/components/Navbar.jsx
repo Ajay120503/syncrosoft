@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 
 const navItems = [
@@ -22,7 +22,7 @@ const navContainerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.4 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.4 },
   },
 };
 
@@ -33,6 +33,7 @@ const navItemVariants = {
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <motion.header
@@ -55,7 +56,11 @@ const Navbar = () => {
             <motion.div key={item.name} variants={navItemVariants}>
               <Link
                 to={item.path}
-                className="text-lg font-medium hover:text-primary transition duration-300"
+                className={`text-lg font-medium transition duration-300 ${
+                  location.pathname === item.path
+                    ? "text-primary border-b-2 border-primary pb-1"
+                    : "hover:text-primary"
+                }`}
               >
                 {item.name}
               </Link>
@@ -104,7 +109,11 @@ const Navbar = () => {
                   <Link
                     to={item.path}
                     onClick={() => setMenuOpen(false)}
-                    className="text-lg font-medium hover:text-primary transition duration-300"
+                    className={`text-lg font-medium transition duration-300 ${
+                      location.pathname === item.path
+                        ? "text-primary border-b-2 border-primary pb-1"
+                        : "hover:text-primary"
+                    }`}
                   >
                     {item.name}
                   </Link>
