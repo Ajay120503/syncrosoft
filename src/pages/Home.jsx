@@ -45,7 +45,7 @@ const Home = () => {
       Welcome to{" "}
       <span className="text-primary inline-flex overflow-hidden">
         <RotatingText
-          texts={["SyncroSoft", "SyncroSoft"]}
+          texts={["syncrosoft", "syncrosft"]}
           splitBy="characters"
           transition={{ duration: 0.5, ease: "easeOut" }}
           rotationInterval={2500}

@@ -1,6 +1,8 @@
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -8,11 +10,10 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Team from "./pages/Team.jsx";
 import { ArrowDownCircle } from "lucide-react";
-import Footer from './components/Footer';
 
 function AppContent() {
-  const [showIndicator, setShowIndicator] = useState(true);
-  const [showTip, setShowTip] = useState(true);
+  const [showIndicator, setShowIndicator] = useState(false);
+  const [showTip, setShowTip] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -36,19 +37,24 @@ function AppContent() {
     navigate(getPrevPage());
   };
 
-  // Hide floating indicator after 5s
+  // Show floating indicator + tip after 1.2s, then hide both after 5s
   useEffect(() => {
-    const indicatorTimer = setTimeout(() => setShowIndicator(false), 5000);
-    return () => clearTimeout(indicatorTimer);
-  }, []);
+    const loadTimer = setTimeout(() => {
+      setShowIndicator(true);
+      setShowTip(true);
 
-  // Hide tip after 5s
-  useEffect(() => {
-    const tipTimer = setTimeout(() => setShowTip(false), 5000);
-    return () => clearTimeout(tipTimer);
-  }, []);
+      const tipTimer = setTimeout(() => {
+        setShowTip(false);
+        setShowIndicator(false);
+      }, 5000);
 
-  // Handle mobile scroll up and down
+      return () => clearTimeout(tipTimer);
+    }, 1200);
+
+    return () => clearTimeout(loadTimer);
+  }, [location.pathname]);
+
+  // Mobile scroll navigation
   useEffect(() => {
     let lastScrollTop = window.scrollY;
 
@@ -57,12 +63,10 @@ function AppContent() {
       const scrollPosition = window.innerHeight + currentScrollTop;
       const pageHeight = document.body.offsetHeight;
 
-      // Scroll down to next page
       if (scrollPosition >= pageHeight - 5) {
         navigateToNext();
       }
 
-      // Scroll up to top of page
       if (currentScrollTop < lastScrollTop && currentScrollTop === 0) {
         navigateToPrev();
       }
@@ -74,7 +78,7 @@ function AppContent() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [location.pathname]);
 
-  // Handle desktop arrow keys
+  // Desktop arrow keys navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowDown") {
@@ -100,25 +104,43 @@ function AppContent() {
         <Route path="/team" element={<Team />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-      
-      {/* Floating indicator */}
-      {showIndicator && (
-        <div className="fixed left-1/2 bottom-10 md:top-1/2 transform -translate-x-1/2 md:-translate-y-1/2 z-50 flex flex-col items-center gap-3 animate-bounce">
-          <button
-            onClick={navigateToNext}
-            className="btn btn-outline btn-primary btn-circle text-white shadow-lg"
-          >
-            <ArrowDownCircle size={26} />
-          </button>
 
-          {/* Floating tip */}
-          {showTip && (
-            <div className="text-sm bg-base-200 text-primary rounded-lg px-3 py-1 shadow-md animate-fade-in-out whitespace-nowrap">
-              Press <strong>↑</strong> / <strong>↓</strong> to navigate
-            </div>
-          )}
-        </div>
-      )}
+      {/* Floating indicator with AnimatePresence */}
+      <AnimatePresence>
+        {showIndicator && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 20 }}
+            transition={{ duration: 0.4 }}
+            className="fixed left-5 bottom-20 transform -translate-x-1/2 z-50 flex flex-col items-center gap-3"
+          >
+            <button
+              onClick={navigateToNext}
+              className="btn btn-outline btn-primary btn-circle text-white shadow-lg animate-bounce"
+            >
+              <ArrowDownCircle size={26} />
+            </button>
+
+            {/* Tip text */}
+            <AnimatePresence>
+              {showTip && (
+                <motion.div
+                  key="tip"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 8 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-sm bg-base-200 text-primary rounded-lg px-3 py-1 shadow-md whitespace-nowrap"
+                >
+                  Press <strong>↑</strong> / <strong>↓</strong> to navigate
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <Footer />
     </>
   );
