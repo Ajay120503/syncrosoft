@@ -31,7 +31,7 @@ function App() {
         <div className="fixed top-20 right-3 z-50">
           <ThemeSelector />
         </div>
-        <div className="relative z-50">
+        <div className="relative z-40">
           <AppContent />
         </div>
       </BrowserRouter>

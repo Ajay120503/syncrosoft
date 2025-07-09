@@ -4,11 +4,21 @@ import RotatingText from "../components/RotatingText";
 import TeamCard from "../components/TeamCard.jsx";
 
 import AJAY from "../assets/team/ajay.jpeg";
+import SAMARTH from "../assets/team/samarth.jpg";
 import SADHANA from "../assets/team/sadhana.jpeg";
 import SOHAN from "../assets/team/sohan.jpeg";
 import ABHISHEK from "../assets/team/abhishek.jpeg";
 
 const teamMembers = [
+  {
+    name: "Samarth Kanthale",
+    role: "Full Stack Developer",
+    photo: SAMARTH,
+    email: "mailto:samarth.syncrosoft@gmail.com",
+    phone: "tel:+918446857060",
+    github: "https://github.com/Samarth-SyncroSoft",
+    portfolio: "https://demo.com",
+  },
   {
     name: "Ajay Kandhare",
     role: "Full Stack Developer",

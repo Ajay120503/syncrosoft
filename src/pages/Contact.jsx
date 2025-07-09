@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
 import contactImage from "../assets/contact.svg";
 import RotatingText from "../components/RotatingText";
+import Footer from '../components/Footer';
 
 const Contact = () => {
   const [form, setForm] = useState({
@@ -141,6 +142,7 @@ const Contact = () => {
             </form>
           </div>
         </div>
+        <Footer />
       </motion.div>
     </section>
   );

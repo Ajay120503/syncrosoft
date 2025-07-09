@@ -2,7 +2,6 @@ import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
@@ -37,21 +36,27 @@ function AppContent() {
     navigate(getPrevPage());
   };
 
-  // Show floating indicator + tip after 1.2s, then hide both after 5s
+  // Show indicator + tip once per session
   useEffect(() => {
-    const loadTimer = setTimeout(() => {
-      setShowIndicator(true);
-      setShowTip(true);
+    const shownOnce = sessionStorage.getItem("floatingIndicatorShown");
 
-      const tipTimer = setTimeout(() => {
-        setShowTip(false);
-        setShowIndicator(false);
-      }, 5000);
+    if (!shownOnce) {
+      const loadTimer = setTimeout(() => {
+        setShowIndicator(true);
+        setShowTip(true);
 
-      return () => clearTimeout(tipTimer);
-    }, 1200);
+        const tipTimer = setTimeout(() => {
+          setShowTip(false);
+          setShowIndicator(false);
+        }, 5000);
 
-    return () => clearTimeout(loadTimer);
+        sessionStorage.setItem("floatingIndicatorShown", "true");
+
+        return () => clearTimeout(tipTimer);
+      }, 1200);
+
+      return () => clearTimeout(loadTimer);
+    }
   }, [location.pathname]);
 
   // Mobile scroll navigation
@@ -113,7 +118,7 @@ function AppContent() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.4 }}
-            className="fixed left-5 bottom-20 transform -translate-x-1/2 z-50 flex flex-col items-center gap-3"
+            className="w-1/2 fixed right-1/2 bottom-20 transform -translate-x-1/2 z-50 flex flex-col items-center gap-3"
           >
             <button
               onClick={navigateToNext}
@@ -131,7 +136,7 @@ function AppContent() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 8 }}
                   transition={{ duration: 0.3 }}
-                  className="text-sm bg-base-200 text-primary rounded-lg px-3 py-1 shadow-md whitespace-nowrap"
+                  className="text-sm hidden lg:block bg-base-200 text-primary rounded-lg px-3 py-1 shadow-md whitespace-nowrap"
                 >
                   Press <strong>↑</strong> / <strong>↓</strong> to navigate
                 </motion.div>
@@ -140,8 +145,6 @@ function AppContent() {
           </motion.div>
         )}
       </AnimatePresence>
-
-      <Footer />
     </>
   );
 }

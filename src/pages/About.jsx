@@ -5,7 +5,7 @@ import LetterGlitch from "../components/LetterGlitch";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Github, Instagram, Facebook, Twitter, Linkedin} from "lucide-react";
 
-// import samarth from "../assets/team/samarth.jpeg";
+import samarth from "../assets/team/samarth.jpg";
 import ajay from "../assets/team/ajay.jpeg";
 import sadhana from "../assets/team/sadhana.jpeg";
 import sohan from "../assets/team/sohan.jpeg";
@@ -13,7 +13,7 @@ import sohan from "../assets/team/sohan.jpeg";
 import abhishek from "../assets/team/abhishek.jpeg";
 
 const teamMembers = [
-  // { name: "Samarth Kanthale (CEO)", photo: samarth },
+  { name: "Samarth Kanthale (CEO)", photo: samarth },
   { name: "Ajay Kandhare", photo: ajay },
   { name: "Sadhana Jadhav", photo: sadhana },
   { name: "Sohan Kendre", photo: sohan },

@@ -42,7 +42,7 @@ const Navbar = () => {
       animate="visible"
       className="fixed top-0 z-50 w-full bg-base-100 shadow-md"
     >
-      <div className="flex items-center justify-between px-6 lg:px-12 py-3">
+      <div className="flex items-center justify-between px-1 lg:px-6 py-3">
         <Logo />
 
         {/* Desktop Menu */}
