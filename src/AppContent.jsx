@@ -101,7 +101,6 @@ function AppContent() {
   return (
     <>
       <Navbar />
-
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -111,7 +110,7 @@ function AppContent() {
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-
+  
       {/* Floating indicator with AnimatePresence */}
       <AnimatePresence>
         {showIndicator && (
