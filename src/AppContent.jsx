@@ -9,6 +9,7 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Team from "./pages/Team.jsx";
 import { ArrowDownCircle } from "lucide-react";
+import Testimonials from './components/Testimonials';
 
 function AppContent() {
   const [showIndicator, setShowIndicator] = useState(false);
@@ -16,7 +17,7 @@ function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const pages = ["/", "/about", "/services", "/projects", "/team", "/contact"];
+  const pages = ["/", "/about", "/services", "/projects", "/team", "/testimonials", "/contact"];
 
   const getNextPage = () => {
     const currentIndex = pages.indexOf(location.pathname);
@@ -107,6 +108,7 @@ function AppContent() {
         <Route path="/services" element={<Services />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/team" element={<Team />} />
+        <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
 
