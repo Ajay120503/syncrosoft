@@ -1,23 +1,22 @@
 import { motion } from "framer-motion";
 import aboutImage from "../assets/about.svg";
-import RotatingText from "../components/RotatingText";
 import LetterGlitch from "../components/LetterGlitch";
 import { Link } from "react-router-dom";
 import { Mail, Phone, Github, Instagram, Facebook, Twitter, Linkedin} from "lucide-react";
 
-import samarth from "../assets/team/samarth.jpg";
+import samarth from "../assets/team/samarth.jpeg";
+import rutika from "../assets/team/rutika.jpeg";
 import ajay from "../assets/team/ajay.jpeg";
 import sadhana from "../assets/team/sadhana.jpeg";
 import sohan from "../assets/team/sohan.jpeg";
-// import rutika from "../assets/team/rutika.jpeg";
 import abhishek from "../assets/team/abhishek.jpeg";
 
 const teamMembers = [
   { name: "Samarth Kanthale (CEO)", photo: samarth },
+  { name: "Rutika Ekshinge", photo: rutika },
   { name: "Ajay Kandhare", photo: ajay },
   { name: "Sadhana Jadhav", photo: sadhana },
   { name: "Sohan Kendre", photo: sohan },
-  // { name: "Rutika Ekshinge", photo: rutika }
   { name: "Abhishek Jaiswar", photo: abhishek },
 ];
 
@@ -55,17 +54,8 @@ const About = () => {
   >
     <h2 className="text-4xl md:text-5xl font-bold text-base-content">
       About{" "}
-      <span className="text-primary inline-flex overflow-hidden">
-        <RotatingText
-          texts={["SyncroSoft", "Future-Ready"]}
-          splitBy="characters"
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          rotationInterval={2500}
-          staggerDuration={0.03}
-          animate={{ y: 0, opacity: 1 }}
-          initial={{ y: "100%", opacity: 0 }}
-          exit={{ y: "-100%", opacity: 0 }}
-        />
+          <span className="text-primary inline-flex overflow-hidden">
+            SyncroSoft
       </span>
     </h2>
 
@@ -144,7 +134,7 @@ const About = () => {
               className="flex flex-col items-center gap-2"
             >
               <div className="avatar">
-                <div className="w-32 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
+                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
                   <img
                     src={member.photo}
                     alt={member.name}

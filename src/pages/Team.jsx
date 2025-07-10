@@ -1,10 +1,10 @@
 import React from "react";
 import { motion } from "framer-motion";
-import RotatingText from "../components/RotatingText";
 import TeamCard from "../components/TeamCard.jsx";
 
+import SAMARTH from "../assets/team/samarth.jpeg";
+import RUTIKA from "../assets/team/rutika.jpeg";
 import AJAY from "../assets/team/ajay.jpeg";
-import SAMARTH from "../assets/team/samarth.jpg";
 import SADHANA from "../assets/team/sadhana.jpeg";
 import SOHAN from "../assets/team/sohan.jpeg";
 import ABHISHEK from "../assets/team/abhishek.jpeg";
@@ -17,6 +17,14 @@ const teamMembers = [
     email: "mailto:samarth.syncrosoft@gmail.com",
     phone: "tel:+918446857060",
     github: "https://github.com/Samarth-SyncroSoft",
+    portfolio: "https://demo.com",
+  },
+  { name: "Rutika Ekshinge",
+    role: "Web Developer",
+    photo: RUTIKA,
+    email: "mailto:rutika.syncrosoft@gmail.com",
+    phone: "tel:+9145488758",
+    github: "https://github.com/temp",
     portfolio: "https://demo.com",
   },
   {
@@ -73,18 +81,7 @@ const Team = () => {
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-base-content">
                     Meet Our{" "}
                     <span className="text-primary inline-flex overflow-hidden">
-                      <RotatingText
-                        texts={["Team", "Team",]}
-                        splitBy="characters"
-                        transition={{ duration: 0.5, ease: "easeOut" }}
-                        rotationInterval={2500}
-                        staggerDuration={0.03}
-                        splitLevelClassName=""
-                        elementLevelClassName="text-primary"
-                        animate={{ y: 0, opacity: 1 }}
-                        initial={{ y: "100%", opacity: 0 }}
-                        exit={{ y: "-100%", opacity: 0 }}
-                      />
+                      Team
                     </span>
                   </h1>
       </motion.h1>

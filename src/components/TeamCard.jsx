@@ -18,7 +18,7 @@ const TeamCard = ({ member, index, motion }) => {
           alt={member.name}
           className="w-full h-96 object-cover rounded-t-xl group-hover:scale-105 transition-all duration-500"
         />
-        <h2 className="absolute top-3 left-3 text-white bg-primary px-3 py-1 rounded-lg text-sm font-semibold shadow">
+        <h2 className="absolute top-3 left-3 text-white bg-primary-content/70 px-3 py-1 rounded-lg text-sm font-semibold shadow">
           {member.name}
         </h2>
       </div>

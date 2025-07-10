@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import toast from "react-hot-toast";
 import emailjs from "emailjs-com";
 import contactImage from "../assets/contact.svg";
-import RotatingText from "../components/RotatingText";
 import Footer from '../components/Footer';
 
 const Contact = () => {
@@ -83,18 +82,7 @@ const Contact = () => {
             <h1 className="text-4xl md:text-5xl font-bold text-base-content">
               Get in{" "}
               <span className="text-primary inline-flex overflow-hidden">
-                <RotatingText
-                  texts={["Touch", "Touch"]}
-                  splitBy="characters"
-                  transition={{ duration: 0.5, ease: "easeOut" }}
-                  rotationInterval={2500}
-                  staggerDuration={0.03}
-                  splitLevelClassName=""
-                  elementLevelClassName="text-primary"
-                  animate={{ y: 0, opacity: 1 }}
-                  initial={{ y: "100%", opacity: 0 }}
-                  exit={{ y: "-100%", opacity: 0 }}
-                />
+                Touch
               </span>
             </h1>
 

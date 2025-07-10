@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
-import RotatingText from "../components/RotatingText";
 import project1 from "../assets/projects/FUNCHAT.png";
 import project2 from "../assets/projects/CWF.png";
 
@@ -28,7 +27,7 @@ const badgeColors = ["primary", "secondary", "accent", "info", "success", "warni
 
 const Projects = () => {
   return (
-    <section id="projects" className="w-full min-h-screen flex flex-col justify-center px-6 md:px-16 py-20 bg-base-100 overflow-hidden">
+    <section id="projects" className="w-full min-h-screen flex flex-col justify-start px-6 md:px-16 py-20 bg-base-100 overflow-hidden">
       <motion.h1
         initial={{ y: 50, opacity: 0 }}
         whileInView={{ y: 0, opacity: 1 }}
@@ -38,17 +37,7 @@ const Projects = () => {
       >
         Our{" "}
         <span className="text-primary inline-flex overflow-hidden">
-          <RotatingText
-            texts={["Team Work", "Team Work"]}
-            splitBy="characters"
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            rotationInterval={2500}
-            staggerDuration={0.03}
-            elementLevelClassName="text-primary"
-            animate={{ y: 0, opacity: 1 }}
-            initial={{ y: "100%", opacity: 0 }}
-            exit={{ y: "-100%", opacity: 0 }}
-          />
+          Team Work
         </span>
       </motion.h1>
 

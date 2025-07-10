@@ -12,7 +12,6 @@ import {
   Globe2,
   MessageCircle,
 } from "lucide-react";
-import RotatingText from "../components/RotatingText";
 
 const services = [
   { icon: Code2, title: "Web Development", description: "Custom, fast-loading, mobile-friendly MERN stack websites built with modern technologies." },
@@ -41,18 +40,8 @@ const Services = () => {
       className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10 text-base-content"
     >
       Our{" "}
-      <span className="text-primary inline-flex overflow-hidden">
-        <RotatingText
-          texts={["Services", "Services"]}
-          splitBy="characters"
-          transition={{ duration: 0.5, ease: "easeOut" }}
-          rotationInterval={2500}
-          staggerDuration={0.03}
-          elementLevelClassName="text-primary"
-          animate={{ y: 0, opacity: 1 }}
-          initial={{ y: "100%", opacity: 0 }}
-          exit={{ y: "-100%", opacity: 0 }}
-        />
+          <span className="text-primary inline-flex overflow-hidden">
+            Services
       </span>
     </motion.h1>
 
