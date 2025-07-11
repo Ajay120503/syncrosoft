@@ -9,7 +9,7 @@ import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import Team from "./pages/Team.jsx";
 import { ArrowDownCircle } from "lucide-react";
-import Testimonials from './components/Testimonials';
+import Testimonials from "./components/Testimonials";
 
 function AppContent() {
   const [showIndicator, setShowIndicator] = useState(false);
@@ -37,7 +37,7 @@ function AppContent() {
     navigate(getPrevPage());
   };
 
-  // Show indicator + tip once per session
+  // Show floating indicator once per session
   useEffect(() => {
     const shownOnce = sessionStorage.getItem("floatingIndicatorShown");
 
@@ -60,31 +60,7 @@ function AppContent() {
     }
   }, [location.pathname]);
 
-  // Mobile scroll navigation
-  useEffect(() => {
-    let lastScrollTop = window.scrollY;
-
-    const handleScroll = () => {
-      const currentScrollTop = window.scrollY;
-      const scrollPosition = window.innerHeight + currentScrollTop;
-      const pageHeight = document.body.offsetHeight;
-
-      if (scrollPosition >= pageHeight - 5) {
-        navigateToNext();
-      }
-
-      if (currentScrollTop < lastScrollTop && currentScrollTop === 0) {
-        navigateToPrev();
-      }
-
-      lastScrollTop = currentScrollTop <= 0 ? 0 : currentScrollTop;
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname]);
-
-  // Desktop arrow keys navigation
+  // Desktop arrow key navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "ArrowDown") {
@@ -110,8 +86,8 @@ function AppContent() {
         <Route path="/testimonials" element={<Testimonials />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
-  
-      {/* Floating indicator with AnimatePresence */}
+
+      {/* Floating indicator */}
       <AnimatePresence>
         {showIndicator && (
           <motion.div
