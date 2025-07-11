@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import TeamCard from "../components/TeamCard.jsx";
 
@@ -66,6 +66,23 @@ const teamMembers = [
 ];
 
 const Team = () => {
+
+  const [shuffledMembers, setShuffledMembers] = useState([]);
+
+  const shuffleMembers = () => {
+    const shuffled = [...teamMembers].sort(() => Math.random() - 0.5);
+    setShuffledMembers(shuffled);
+  };
+
+  useEffect(() => {
+    shuffleMembers();
+    const interval = setInterval(() => {
+      shuffleMembers();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section
       id="team"
@@ -88,7 +105,7 @@ const Team = () => {
 
       {/* Team Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
-        {teamMembers.map((member, index) => (
+        {shuffledMembers.map((member, index) => (
           <TeamCard key={index} member={member} index={index} motion={motion} />
         ))}
       </div>

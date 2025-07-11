@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import aboutImage from "../assets/about.svg";
 import LetterGlitch from "../components/LetterGlitch";
@@ -21,6 +22,25 @@ const teamMembers = [
 ];
 
 const About = () => {
+
+  const [shuffledMembers, setShuffledMembers] = useState([]);
+
+  // shuffle function
+  const shuffleMembers = () => {
+    const shuffled = [...teamMembers].sort(() => Math.random() - 0.5);
+    setShuffledMembers(shuffled);
+  };
+
+  // shuffle initially and then every 10 seconds
+  useEffect(() => {
+    shuffleMembers();
+    const interval = setInterval(() => {
+      shuffleMembers();
+    }, 10000);
+
+    return () => clearInterval(interval); // clean up on unmount
+  }, []);
+
   return (
     <section id="about" className="w-full min-h-screen md:justify-center flex flex-col lg:flex-row overflow-hidden bg-base-100">
   {/* Left Illustration */}
@@ -122,31 +142,27 @@ const About = () => {
       <button className="btn btn-primary rounded-full text-base px-8 mt-6">Get In Touch</button>
     </Link>
 
-    {/* Embedded Team Member Avatars */}
-      <div className="mt-12">
-        <h3 className="text-2xl font-bold text-base-content mb-6">Created By</h3>
-        <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6">
-          {teamMembers.map((member, idx) => (
-            <motion.div
-              key={idx}
-              whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
-              transition={{ type: "spring", stiffness: 120 }}
-              className="flex flex-col items-center gap-2"
-            >
-              <div className="avatar">
-                <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="object-cover"
-                  />
+      {/* Team Member Avatars */}
+        <div className="mt-12">
+          <h3 className="text-2xl font-bold text-base-content mb-6">Created By</h3>
+          <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6">
+            {shuffledMembers.map((member, idx) => (
+              <motion.div
+                key={idx}
+                whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
+                transition={{ type: "spring", stiffness: 120 }}
+                className="flex flex-col items-center gap-2"
+              >
+                <div className="avatar">
+                  <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
+                    <img src={member.photo} alt={member.name} className="object-cover" />
+                  </div>
                 </div>
-              </div>
-              <p className="text-base-content text-xs font-semibold text-center">{member.name}</p>
-            </motion.div>
-          ))}
+                <p className="text-base-content text-xs font-semibold text-center">{member.name}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </div>
 
   </motion.div>
 </section>
