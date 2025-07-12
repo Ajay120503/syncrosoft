@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { Github, ExternalLink } from "lucide-react";
 import project1 from "../assets/projects/FUNCHAT.png";
 import project2 from "../assets/projects/CWF.png";

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import aboutImage from "../assets/about.svg";
 import LetterGlitch from "../components/LetterGlitch";
 import { Link } from "react-router-dom";
-import { Mail, Phone, Github, Instagram, Facebook, Twitter, Linkedin} from "lucide-react";
+import { Mail, Phone, Github, Instagram, Facebook, Twitter, Linkedin } from "lucide-react";
 
 import samarth from "../assets/team/samarth.jpeg";
 import rutika from "../assets/team/rutika.jpeg";
@@ -13,16 +13,15 @@ import sohan from "../assets/team/sohan.jpeg";
 import abhishek from "../assets/team/abhishek.jpeg";
 
 const teamMembers = [
-  { name: "Samarth Kanthale (CEO)", photo: samarth },
-  { name: "Rutika Ekshinge", photo: rutika },
-  { name: "Ajay Kandhare", photo: ajay },
-  { name: "Sadhana Jadhav", photo: sadhana },
-  { name: "Sohan Kendre", photo: sohan },
-  { name: "Abhishek Jaiswar", photo: abhishek },
+  { id: 1, name: "Samarth Kanthale", photo: samarth },
+  { id: 2, name: "Rutika Ekshinge", photo: rutika },
+  { id: 3, name: "Ajay Kandhare", photo: ajay },
+  { id: 4, name: "Sadhana Jadhav", photo: sadhana },
+  { id: 5, name: "Sohan Kendre", photo: sohan },
+  { id: 6, name: "Abhishek Jaiswar", photo: abhishek },
 ];
 
 const About = () => {
-
   const [shuffledMembers, setShuffledMembers] = useState([]);
 
   // shuffle function
@@ -31,142 +30,124 @@ const About = () => {
     setShuffledMembers(shuffled);
   };
 
-  // shuffle initially and then every 10 seconds
+  // shuffle initially and every 5 seconds
   useEffect(() => {
     shuffleMembers();
     const interval = setInterval(() => {
       shuffleMembers();
-    }, 10000);
+    }, 5000);
 
-    return () => clearInterval(interval); // clean up on unmount
+    return () => clearInterval(interval);
   }, []);
 
   return (
     <section id="about" className="w-full min-h-screen md:justify-center flex flex-col lg:flex-row overflow-hidden bg-base-100">
-  {/* Left Illustration */}
-  <motion.div
-    initial={{ x: -100, opacity: 0 }}
-    whileInView={{ x: 0, opacity: 1 }}
-    transition={{ duration: 0.8, ease: "easeOut" }}
-    viewport={{ once: true }}
-    className="hidden lg:flex w-1/2 h-screen items-center justify-center relative overflow-hidden"
-  >
-    <div className="absolute inset-0 z-0">
-      <LetterGlitch glitchSpeed={80} opacity={40} />
-    </div>
-    <motion.img
-      initial={{ scale: 0.95 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
-      src={aboutImage}
-      alt="About illustration"
-      className="w-full h-full object-contain opacity-80 z-10"
-    />
-  </motion.div>
-
-  {/* Right Text Content */}
-  <motion.div
-    initial={{ x: 100, opacity: 0 }}
-    whileInView={{ x: 0, opacity: 1 }}
-    transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
-    viewport={{ once: true }}
-    className="w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-12 py-32 space-y-6"
-  >
-    <h2 className="text-4xl md:text-5xl font-bold text-base-content">
-      About{" "}
-          <span className="text-primary inline-flex overflow-hidden">
-            SyncroSoft
-      </span>
-    </h2>
-
-    <p className="text-lg text-base-content/80">
-      At <span className="text-secondary font-bold">SyncroSoft</span>, we develop
-      <span className="text-secondary font-bold"> secure, scalable</span>, and
-      <span className="text-secondary font-bold"> high-performance software solutions</span> tailored for future-ready businesses.
-    </p>
-
-    {/* Contact Buttons */}
-    <div className="flex flex-wrap gap-3 mt-2">
-      <a href="mailto:info.syncrosoft@gmail.com" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
-        <Mail size={16} /> info.syncrosoft@gmail.com
-      </a>
-      <a href="tel:+918446857060" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
-        <Phone size={16} /> +91 84468 57060
-      </a>
-      <a href="https://github.com/SyncroSoft-Solutions" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
-        <Github size={16} /> GitHub
-      </a>
+      {/* Left Illustration */}
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        viewport={{ once: true }}
+        className="hidden lg:flex w-1/2 h-screen items-center justify-center relative overflow-hidden"
+      >
+        <div className="absolute inset-0 z-0">
+          <LetterGlitch glitchSpeed={80} opacity={40} />
         </div>
-      {/* Social Buttons */}
-<div className="flex flex-wrap gap-3 mt-4">
-  <a
-    href="https://instagram.com/syncrosoft"
-    target="_blank"
-    rel="noreferrer"
-    className="btn btn-sm btn-circle bg-[#E1306C] border-none hover:opacity-90 text-white"
-    title="Instagram"
-  >
-    <Instagram size={18} />
-  </a>
-  <a
-    href="https://facebook.com/syncrosoft"
-    target="_blank"
-    rel="noreferrer"
-    className="btn btn-sm btn-circle bg-[#1877F2] border-none hover:opacity-90 text-white"
-    title="Facebook"
-  >
-    <Facebook size={18} />
-  </a>
-  <a
-    href="https://twitter.com/syncrosoft"
-    target="_blank"
-    rel="noreferrer"
-    className="btn btn-sm btn-circle bg-[#1DA1F2] border-none hover:opacity-90 text-white"
-    title="Twitter"
-  >
-    <Twitter size={18} />
-  </a>
-  <a
-    href="https://linkedin.com/company/syncrosoft"
-    target="_blank"
-    rel="noreferrer"
-    className="btn btn-sm btn-circle bg-[#0A66C2] border-none hover:opacity-90 text-white"
-    title="LinkedIn"
-  >
-    <Linkedin size={18} />
-  </a>
-</div>
+        <motion.img
+          initial={{ scale: 0.95 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
+          src={aboutImage}
+          alt="About illustration"
+          className="w-full h-full object-contain opacity-80 z-10"
+        />
+      </motion.div>
 
+      {/* Right Text Content */}
+      <motion.div
+        initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
+        viewport={{ once: true }}
+        className="w-full lg:w-1/2 flex flex-col justify-center px-6 md:px-12 py-32 space-y-6"
+      >
+        <h2 className="text-4xl md:text-5xl font-bold text-base-content">
+          About{" "}
+          <span className="text-primary inline-flex overflow-hidden">SyncroSoft</span>
+        </h2>
 
-    <Link to="/contact">
-      <button className="btn btn-primary rounded-full text-base px-8 mt-6">Get In Touch</button>
-    </Link>
+        <p className="text-lg text-base-content/80">
+          At <span className="text-secondary font-bold">SyncroSoft</span>, we develop
+          <span className="text-secondary font-bold"> secure, scalable</span>, and
+          <span className="text-secondary font-bold"> high-performance software solutions</span> tailored for future-ready businesses.
+        </p>
 
-      {/* Team Member Avatars */}
+        {/* Contact Buttons */}
+        <div className="flex flex-wrap gap-3 mt-2">
+          <a href="mailto:info.syncrosoft@gmail.com" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
+            <Mail size={16} /> info.syncrosoft@gmail.com
+          </a>
+          <a href="tel:+918446857060" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
+            <Phone size={16} /> +91 84468 57060
+          </a>
+          <a href="https://github.com/SyncroSoft-Solutions" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
+            <Github size={16} /> GitHub
+          </a>
+        </div>
+
+        {/* Social Buttons */}
+        <div className="flex flex-wrap gap-3 mt-4">
+          <a href="https://instagram.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#E1306C] border-none hover:opacity-90 text-white" title="Instagram">
+            <Instagram size={18} />
+          </a>
+          <a href="https://facebook.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#1877F2] border-none hover:opacity-90 text-white" title="Facebook">
+            <Facebook size={18} />
+          </a>
+          <a href="https://twitter.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#1DA1F2] border-none hover:opacity-90 text-white" title="Twitter">
+            <Twitter size={18} />
+          </a>
+          <a href="https://linkedin.com/company/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#0A66C2] border-none hover:opacity-90 text-white" title="LinkedIn">
+            <Linkedin size={18} />
+          </a>
+        </div>
+
+        <Link to="/contact">
+          <button className="btn btn-primary rounded-full text-base px-8 mt-6">Get In Touch</button>
+        </Link>
+
+        {/* Team Member Avatars */}
         <div className="mt-12">
           <h3 className="text-2xl font-bold text-base-content mb-6">Created By</h3>
-          <div className="flex flex-wrap justify-center lg:justify-start items-center gap-6">
-            {shuffledMembers.map((member, idx) => (
-              <motion.div
-                key={idx}
-                whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
-                transition={{ type: "spring", stiffness: 120 }}
-                className="flex flex-col items-center gap-2"
-              >
-                <div className="avatar">
-                  <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
-                    <img src={member.photo} alt={member.name} className="object-cover" />
+          <motion.div layout className="flex flex-wrap justify-center lg:justify-start items-center gap-6">
+            <AnimatePresence>
+              {shuffledMembers.map((member) => (
+                <motion.div
+                  key={member.id}
+                  id={`member-${member.id}`} // ✅ numeric stable id
+                  layout
+                  whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
+                  transition={{ type: "spring", stiffness: 150, damping: 18 }}
+                  className="flex flex-col items-center gap-2"
+                >
+                  <div className="avatar">
+                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
+                      <img src={member.photo} alt={member.name} className="object-cover" />
+                      {/* CEO Badge */}
+                      {member.id === 1 && (
+                        <span className="absolute top-0 right-0 bg-secondary text-white text-[10px] font-bold px-2 py-[2px] rounded-bl-lg">
+                          CEO
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <p className="text-base-content text-xs font-semibold text-center">{member.name}</p>
-              </motion.div>
-            ))}
-          </div>
+                  <p className="text-base-content text-xs font-semibold text-center">{member.name}</p>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
-
-  </motion.div>
-</section>
-
+      </motion.div>
+    </section>
   );
 };
 

@@ -1,14 +1,11 @@
 import React from "react";
 import { Mail, Phone, Github, FolderOpen } from "lucide-react";
 
-const TeamCard = ({ member, index, motion }) => {
+const TeamCard = ({ member, motion }) => {
   return (
     <motion.div
-      key={index}
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.1 }}
-      viewport={{ once: true }}
+      layout
+      transition={{ duration: 0.5, ease: "easeInOut" }}
       className="card bg-base-200 border-2 border-base-content/5 shadow-xl hover:shadow-2xl overflow-hidden group transition-all duration-300 relative"
     >
       {/* Profile Image */}
