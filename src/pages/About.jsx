@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import aboutImage from "../assets/about.svg";
 import LetterGlitch from "../components/LetterGlitch";
 import { Link } from "react-router-dom";
-import { Mail, Phone, Github, Instagram, Facebook, Twitter, Linkedin } from "lucide-react";
+import { Mail, Phone, Github, Instagram, Twitter, Linkedin } from "lucide-react";
 
 import samarth from "../assets/team/samarth.jpeg";
 import rutika from "../assets/team/rutika.jpeg";
@@ -51,7 +51,7 @@ const About = () => {
         className="hidden lg:flex w-1/2 h-screen items-center justify-center relative overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <LetterGlitch glitchSpeed={80} opacity={40} />
+          <LetterGlitch glitchSpeed={80} opacity={30} />
         </div>
         <motion.img
           initial={{ scale: 0.95 }}
@@ -118,34 +118,52 @@ const About = () => {
         {/* Team Member Avatars */}
         <div className="mt-12">
           <h3 className="text-2xl font-bold text-base-content mb-6">Created By</h3>
-          <motion.div layout className="flex flex-wrap justify-center lg:justify-start items-center gap-6">
+          <motion.div
+            layout
+            variants={{
+              animate: { transition: { staggerChildren: 0.1 } },
+            }}
+            initial="hidden"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="flex flex-wrap justify-center lg:justify-start items-center gap-6"
+          >
             <AnimatePresence>
-              {shuffledMembers.map((member) => (
+              {shuffledMembers.map((member, i) => (
                 <motion.div
                   key={member.id}
-                  id={`member-${member.id}`}
                   layout
-                  whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
-                  transition={{ type: "spring", stiffness: 150, damping: 18 }}
-                  className="flex flex-col items-center gap-2"
+                  initial={{ opacity: 0, y: 40, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 30 }}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.05 }}
+                  whileHover={{ scale: 1.08, rotate: [0, 2, -2, 0] }}
+                  className="relative flex flex-col items-center gap-3 group"
                 >
-                  <div className="avatar">
-                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow">
+                  {/* Pulse glow ring */}
+                  <div className="absolute -inset-1 rounded-full opacity-0 group-hover:opacity-100 animate-pulse-slow bg-gradient-to-r from-primary via-accent to-secondary blur-2xl z-0 transition duration-300"></div>
+
+                  {/* Avatar */}
+                  <div className="avatar relative z-10">
+                    <div className="w-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 shadow transition duration-300 group-hover:scale-105">
                       <img src={member.photo} alt={member.name} className="object-cover" />
                       {/* CEO Badge */}
                       {member.id === 1 && (
-                        <span className="absolute top-0 right-0 bg-secondary text-white text-[10px] font-bold px-2 py-[2px] rounded-bl-lg">
+                        <span className="absolute top-0 right-0 bg-secondary text-white text-[10px] font-bold px-2 py-[2px] rounded-bl-lg shadow">
                           CEO
                         </span>
                       )}
                     </div>
                   </div>
+
+                  {/* Name */}
                   <p className="text-base-content text-xs font-semibold text-center">{member.name}</p>
                 </motion.div>
               ))}
             </AnimatePresence>
           </motion.div>
         </div>
+
       </motion.div>
     </section>
   );
