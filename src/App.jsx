@@ -9,9 +9,12 @@ import Loader from './components/Loader.jsx';
 import { Toaster } from 'react-hot-toast';
 import AppContent from './AppContent';
 
+import { useIsWindows } from './hooks/useIsWindows';
+
 function App() {
   const { theme } = useThemeStore();
   const [loading, setLoading] = useState(true);
+  const isWindows = useIsWindows();
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -25,7 +28,7 @@ function App() {
     <div className="relative w-screen overflow-x-hidden bg-base-100" data-theme={theme}>
       <Toaster position="top-right" reverseOrder={false} />
       <BrowserRouter>
-        <div className="fixed inset-0 z-0">
+        <div className={`fixed inset-0 z-0 ${isWindows ? 'scale-[0.96]' : ''}`}>
           <LetterGlitch glitchSpeed={80} opacity={50} />
         </div>
         <div className="fixed top-20 right-3 z-50">
