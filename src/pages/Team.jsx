@@ -11,13 +11,67 @@ import ABHISHEK from "../assets/team/abhishek.jpeg";
 
 const teamMembers = [
   {
-    id: 1, name: "Samarth Kanthale", role: "Full Stack Developer", photo: SAMARTH},
-  { id: 2, name: "Rutika Ekshinge", role: "Web Developer", photo: RUTIKA },
-  { id: 3, name: "Ajay Kandhare", role: "Full Stack Developer", photo: AJAY },
-  { id: 4, name: "Sadhana Jadhav", role: "Web Developer", photo: SADHANA },
-  { id: 5, name: "Sohan Kendre", role: "Web Developer", photo: SOHAN },
-  { id: 6, name: "Abhishek Jaiswar", role: "Full Stack Developer", photo: ABHISHEK },
+    id: 1,
+    name: "Samarth Kanthale",
+    role: "Full Stack Developer",
+    photo: SAMARTH,
+    email: "mailto:samarth.syncrosoft@gmail.com",
+    phone: "tel:+918446857060",
+    github: "https://github.com/Samarth-SyncroSoft",
+    portfolio: "https://demo.com"
+  },
+  {
+    id: 2,
+    name: "Rutika Ekshinge",
+    role: "Web Developer",
+    photo: RUTIKA,
+    email: "mailto:rutika.syncrosoft@gmail.com",
+    phone: "tel:+9145488758",
+    github: "https://github.com/temp",
+    portfolio: "https://demo.com"
+  },
+  {
+    id: 3,
+    name: "Ajay Kandhare",
+    role: "Full Stack Developer",
+    photo: AJAY,
+    email: "mailto:ajay.syncrosoft@gmail.com",
+    phone: "tel:+917559394187",
+    github: "https://github.com/ajaysyncrosoft",
+    portfolio: "https://portfolio-0-sigma.vercel.app"
+  },
+  {
+    id: 4,
+    name: "Sadhana Jadhav",
+    role: "Web Developer",
+    photo: SADHANA,
+    email: "mailto:sadhana.syncrosoft@gmail.com",
+    phone: "tel:+919561082845",
+    github: "https://github.com/Sadhanasyncro",
+    portfolio: "https://demo.com"
+  },
+  {
+    id: 5,
+    name: "Sohan Kendre",
+    role: "Web Developer",
+    photo: SOHAN,
+    email: "mailto:sohan.syncrosoft@gmail.com",
+    phone: "tel:+919322653708",
+    github: "https://github.com/Sohansyncrosoft",
+    portfolio: "https://demo.com"
+  },
+  {
+    id: 6,
+    name: "Abhishek Jaiswar",
+    role: "Full Stack Developer",
+    photo: ABHISHEK,
+    email: "mailto:abhishek.syncrosoft@gmail.com",
+    phone: "tel:+918530896645",
+    github: "https://github.com/SycroAbhi",
+    portfolio: "https://demo.com"
+  },
 ];
+
 
 const Team = () => {
   const [shuffledMembers, setShuffledMembers] = useState([]);

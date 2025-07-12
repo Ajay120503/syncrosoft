@@ -1,5 +1,5 @@
 import React from "react";
-import { Mail, Phone, Github, FolderOpen } from "lucide-react";
+import { Mail, Phone, Github, FolderOpen, Star } from "lucide-react";
 
 const TeamCard = ({ member, motion }) => {
   return (
@@ -15,9 +15,17 @@ const TeamCard = ({ member, motion }) => {
           alt={member.name}
           className="w-full h-96 object-cover rounded-t-xl group-hover:scale-105 transition-all duration-500"
         />
+
         <h2 className="absolute top-3 left-3 text-white bg-primary-content/70 px-3 py-1 rounded-lg text-sm font-semibold shadow">
           {member.name}
         </h2>
+
+        {/* CEO Badge */}
+        {member.id === 1 && (
+          <div className="absolute top-3 right-3 bg-primary text-white px-2 py-1 text-xs font-semibold rounded shadow flex items-center gap-1">
+            <Star size={14} /> CEO
+          </div>
+        )}
       </div>
 
       {/* Card Body */}

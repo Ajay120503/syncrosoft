@@ -90,6 +90,9 @@ const About = () => {
           <a href="tel:+918446857060" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
             <Phone size={16} /> +91 84468 57060
           </a>
+          <a href="tel:+918446857060" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
+            <Phone size={16} /> +91 7559394187
+          </a>
           <a href="https://github.com/SyncroSoft-Solutions" target="_blank" rel="noreferrer" className="btn btn-sm btn-outline btn-primary flex items-center gap-2">
             <Github size={16} /> GitHub
           </a>
@@ -97,11 +100,8 @@ const About = () => {
 
         {/* Social Buttons */}
         <div className="flex flex-wrap gap-3 mt-4">
-          <a href="https://instagram.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#E1306C] border-none hover:opacity-90 text-white" title="Instagram">
+          <a href="https://instagram.com/syncrosoft_solutions" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#E1306C] border-none hover:opacity-90 text-white" title="Instagram">
             <Instagram size={18} />
-          </a>
-          <a href="https://facebook.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#1877F2] border-none hover:opacity-90 text-white" title="Facebook">
-            <Facebook size={18} />
           </a>
           <a href="https://twitter.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#1DA1F2] border-none hover:opacity-90 text-white" title="Twitter">
             <Twitter size={18} />
@@ -123,7 +123,7 @@ const About = () => {
               {shuffledMembers.map((member) => (
                 <motion.div
                   key={member.id}
-                  id={`member-${member.id}`} // ✅ numeric stable id
+                  id={`member-${member.id}`}
                   layout
                   whileHover={{ scale: 1.08, rotate: [0, 1, -1, 0] }}
                   transition={{ type: "spring", stiffness: 150, damping: 18 }}
