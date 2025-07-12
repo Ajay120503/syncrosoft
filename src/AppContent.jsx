@@ -7,9 +7,9 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
+import Testimonials from "./pages/Testimonials";
 import Team from "./pages/Team.jsx";
 import { ArrowDownCircle } from "lucide-react";
-import Testimonials from "./components/Testimonials";
 
 function AppContent() {
   const [showIndicator, setShowIndicator] = useState(false);
