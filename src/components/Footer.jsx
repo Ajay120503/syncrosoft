@@ -36,7 +36,7 @@ const Footer = () => {
       variants={footerVariants}
       initial="hidden"
       animate="visible"
-      className="w-screen absolute bottom-0 right-0 bg-base-200 text-base-content py-3 mt-auto shadow-inner"
+      className="w-screen absolute bottom-0 right-0 bg-base-200 text-base-content py-4 mt-auto shadow-inner"
     >
       <motion.div
         variants={footerVariants}

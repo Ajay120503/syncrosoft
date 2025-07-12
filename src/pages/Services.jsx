@@ -1,16 +1,8 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
-  Code2,
-  Smartphone,
-  Paintbrush,
-  CloudCog,
-  BarChart4,
-  Users2,
-  ShieldCheck,
-  ServerCog,
-  Globe2,
-  MessageCircle,
+  Code2, Smartphone, Paintbrush, CloudCog, BarChart4, Users2,
+  ShieldCheck, ServerCog, Globe2, MessageCircle
 } from "lucide-react";
 
 const services = [
@@ -26,52 +18,87 @@ const services = [
   { icon: MessageCircle, title: "Customer Support Systems", description: "Integrate modern live chat, ticketing, and CRM systems for better customer experience." },
 ];
 
+const containerVariants = {
+  animate: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const cardVariants = {
+  initial: { opacity: 0, y: 30, scale: 0.98 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+};
+
 const Services = () => {
+  const { scrollYProgress } = useScroll();
+  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -50]);
+
   return (
     <section id="services" className="h-screen w-full bg-base-100 overflow-hidden">
-  <div className="w-full h-screen overflow-y-auto px-6 md:px-16 py-10 pt-20">
+      <div className="w-full h-screen overflow-y-auto px-6 md:px-16 py-10 pt-20">
 
-    {/* Heading */}
-    <motion.h1
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      viewport={{ once: true }}
-      className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-10 text-base-content"
-    >
-      Our{" "}
+        {/* Heading */}
+        <motion.h1
+          initial={{ y: 60, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl lg:text-6xl font-bold text-center mb-16 text-base-content"
+        >
+          Our{" "}
           <span className="text-primary inline-flex overflow-hidden">
             Services
-      </span>
-    </motion.h1>
+          </span>
+        </motion.h1>
 
-    {/* Services Grid */}
-    <div className="max-w-[1280px] w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
-      {services.map((service, index) => (
+        {/* Services Grid */}
         <motion.div
-          key={index}
-          initial={{ y: 40, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 }}
+          variants={containerVariants}
+          initial="initial"
+          whileInView="animate"
           viewport={{ once: true }}
-          className="card bg-base-200 shadow-lg p-5 rounded-2xl group hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
+          className="max-w-[1280px] w-full mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8"
         >
-          <div className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 mx-auto">
-            {React.createElement(service.icon, { className: "w-9 h-9 text-primary" })}
-          </div>
+          {services.map((service, index) => (
+            <motion.div
+              key={index}
+              variants={cardVariants}
+              transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.05 }}
+              className="card bg-base-200 shadow-lg p-5 rounded-2xl group hover:shadow-xl hover:scale-[1.03] transition-all duration-300 relative"
+              whileHover={{ y: -4 }}
+            >
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition duration-300 rounded-2xl pointer-events-none"></div>
 
-          <h2 className="text-lg font-semibold text-center text-base-content">
-            {service.title}
-          </h2>
-          <p className="text-sm text-center text-base-content/80 mt-2 leading-relaxed">
-            {service.description}
-          </p>
+              {/* Icon with parallax */}
+              <motion.div
+                style={{ y: yParallax }}
+                whileHover={{ rotate: [0, 5, -5, 0] }}
+                className="flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 mx-auto relative overflow-visible"
+              >
+                {/* Pulse Glow Effect */}
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
+                  <div className="w-24 h-24 rounded-full opacity-0 group-hover:opacity-100 animate-pulse-slow bg-gradient-to-r from-primary via-accent to-secondary blur-2xl"></div>
+                </div>
+
+                {/* Icon */}
+                {React.createElement(service.icon, {
+                  className: "w-9 h-9 text-primary relative z-10",
+                })}
+              </motion.div>
+
+              <h2 className="text-lg font-semibold text-center text-base-content">
+                {service.title}
+              </h2>
+              <p className="text-sm text-center text-base-content/80 mt-2 leading-relaxed">
+                {service.description}
+              </p>
+            </motion.div>
+          ))}
         </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
-
+      </div>
+    </section>
   );
 };
 

@@ -72,9 +72,9 @@ const teamMembers = [
   },
 ];
 
-
 const Team = () => {
   const [shuffledMembers, setShuffledMembers] = useState([]);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   const shuffleMembers = () => {
     const shuffled = [...teamMembers].sort(() => Math.random() - 0.5);
@@ -84,10 +84,12 @@ const Team = () => {
   useEffect(() => {
     shuffleMembers();
     const interval = setInterval(() => {
-      shuffleMembers();
-    }, 5000);
+      if (!isInteracting) {
+        shuffleMembers();
+      }
+    }, 20000);
     return () => clearInterval(interval);
-  }, []);
+  }, [isInteracting]);
 
   const containerVariants = {
     animate: {
@@ -131,6 +133,11 @@ const Team = () => {
             layout
             variants={cardVariants}
             transition={{ duration: 0.5, ease: "easeInOut" }}
+            onHoverStart={() => setIsInteracting(true)}
+            onHoverEnd={() => setIsInteracting(false)}
+            onTapStart={() => setIsInteracting(true)}
+            onTapCancel={() => setIsInteracting(false)}
+            onTap={() => setIsInteracting(false)}
           >
             <TeamCard member={member} index={index} motion={motion} />
           </motion.div>

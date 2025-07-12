@@ -100,7 +100,7 @@ const About = () => {
 
         {/* Social Buttons */}
         <div className="flex flex-wrap gap-3 mt-4">
-          <a href="https://instagram.com/syncrosoft_solutions" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#E1306C] border-none hover:opacity-90 text-white" title="Instagram">
+          <a href="https://instagram.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#E1306C] border-none hover:opacity-90 text-white" title="Instagram">
             <Instagram size={18} />
           </a>
           <a href="https://twitter.com/syncrosoft" target="_blank" rel="noreferrer" className="btn btn-sm btn-circle bg-[#1DA1F2] border-none hover:opacity-90 text-white" title="Twitter">
