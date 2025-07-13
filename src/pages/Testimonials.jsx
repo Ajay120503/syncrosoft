@@ -61,7 +61,7 @@ const iconPulse = {
 
 const Testimonials = () => {
   return (
-    <section id="testimonials" className="lg:w-1/2 w-full h-screen py-20 bg-base-200">
+    <section id="testimonials" className="lg:w-1/2 w-full min-h-screen py-20 bg-base-200">
       <motion.div
         variants={containerVariants}
         initial="hidden"
