@@ -39,7 +39,7 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="w-full min-h-screen flex flex-col justify-start px-6 md:px-16 py-20 bg-base-100 overflow-hidden"
+      className="w-full h-screen flex flex-col justify-start px-6 md:px-16 py-20 bg-base-100 overflow-y-auto"
     >
       <motion.h1
         initial={{ y: 50, opacity: 0 }}
